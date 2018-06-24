@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登录界面</title>
+</head>
+<body>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="注销">
+
+</form>
+<h3>VIP专区</h3>
+<ul>
+    <li><a th:href="@{/level1/1}">VIP1专区</a></li>
+    <li><a th:href="@{/level2/2}">VIP2专区</a></li>
+    <li><a th:href="@{/level3/3}">VIP3专区</a></li>
+</ul>
+</body>
+</html>
