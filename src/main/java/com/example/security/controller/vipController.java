@@ -11,24 +11,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class vipController {
 
     @GetMapping("/index")
-    public String index()
-    {
+    public String index() {
         return "index";
     }
 
-    @GetMapping("/1")
-    public String one()
-    {
+    @GetMapping("/level1/1")
+    public String one() {
         return "level1/1";
     }
-    @GetMapping("/2")
-    public String two()
-    {
+
+    @GetMapping("/level2/2")
+    public String two() {
         return "level2/2";
     }
-    @GetMapping("/3")
-    public String three()
-    {
+
+    @GetMapping("/level3/3")
+    public String three() {
         return "level3/3";
     }
 }

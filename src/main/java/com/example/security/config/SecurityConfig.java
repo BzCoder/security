@@ -4,6 +4,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.LdapShaPasswordEncoder;
 
 /**
  * @author BaoZhou
@@ -35,11 +37,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        //从内存中
-        auth.inMemoryAuthentication().withUser("user1").password("123").roles("VIP1", "VIP2")
+
+                auth
+                /*从内存中读取认证*/
+                .inMemoryAuthentication()
+                /*Spring Security 5.0开始必须要设置加密方式*/
+//                .passwordEncoder(new BCryptPasswordEncoder())
+                        .passwordEncoder(new LdapShaPasswordEncoder())
+                .withUser("user1").password(new BCryptPasswordEncoder().encode("123")).roles("VIP1")
                 .and()
-                .withUser("user2").password("123").roles("VIP2", "VIP3")
+                .withUser("user2").password(new BCryptPasswordEncoder().encode("123")).roles("VIP2")
                 .and()
-                .withUser("user3").password("123").roles("VIP1", "VIP3");
+                .withUser("user3").password(new BCryptPasswordEncoder().encode("123")).roles("VIP3");
     }
 }
