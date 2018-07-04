@@ -15,7 +15,7 @@ import java.io.IOException;
 
 /**
  * 
- * @auther: BaoZhou
+ * @author: BaoZhou
  * @date : 2018/6/25 19:27
  */
 @Component

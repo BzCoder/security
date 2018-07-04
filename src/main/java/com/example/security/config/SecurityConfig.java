@@ -63,7 +63,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .inMemoryAuthentication()
                 /*Spring Security 5.0开始必须要设置加密方式*/
                 .passwordEncoder(new BCryptPasswordEncoder())
-//                        .passwordEncoder(new LdapShaPasswordEncoder())
                 .withUser("user1").password(new BCryptPasswordEncoder().encode("123")).roles("VIP1")
                 .and()
                 .withUser("user2").password(new BCryptPasswordEncoder().encode("123")).roles("VIP2")
